@@ -9,7 +9,7 @@ ENV DEBIAN_FRONTEND=noninteractive \
     GID=1000 \
     HOME=/home/claudette \
     CLAUDE_CONFIG_DIR=/home/claudette/.claude \
-    WORKSPACE=${HOME}/workspace
+    WORKSPACE=/home/claudette/workspace
 
 # Install dependencies
 RUN apt-get update && \
