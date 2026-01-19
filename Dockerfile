@@ -47,14 +47,14 @@ ENV PATH="${HOME}/.local/bin:${PATH}"
 ENV CLAUDE_CLI_CONFIG_DIR=${CLAUDE_CONFIG_DIR}
 
 # Copy entrypoint script
-COPY --chown=${UID}:${GID} entrypoint.sh /home/claudette/entrypoint.sh
-RUN chmod +x /home/claudette/entrypoint.sh
+COPY --chown=${UID}:${GID} entrypoint.sh ${HOME}/entrypoint.sh
+RUN chmod +x ${HOME}/entrypoint.sh
+
+# Set entrypoint to run updates on container start
+ENTRYPOINT ["/bin/bash", "-c", "$HOME/entrypoint.sh"]
 
 # Set working directory for projects
 WORKDIR ${HOME}/workspace
-
-# Set entrypoint to run updates on container start
-ENTRYPOINT ["/home/claudette/entrypoint.sh"]
 
 # Default command
 CMD ["/bin/bash"]

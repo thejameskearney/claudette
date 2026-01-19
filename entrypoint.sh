@@ -11,5 +11,5 @@ if ! claude update 2>&1; then
     claude update
 fi
 
-# Execute the command passed to docker run, or default CMD
-exec "$@"
+# Start a shell
+exec /bin/bash
